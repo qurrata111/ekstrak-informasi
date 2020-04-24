@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title style="font-family: Arial, Helvetica, sans-serif;">Extraction Information Application</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    />
+
+    <style>
+      .alert {
+        background: rgb(221, 208, 21);
+        padding: 1rem;
+        border-radius: 5px;
+        color: rgb(7, 7, 7);
+        margin: 1rem;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .container {
+        text-align:left;
+        font-family:Arial, Helvetica, sans-serif;
+        color:white;
+      }
+
+    </style>
+  </head>
+  <body background="../static/background.jpg">
+    <div class="container">
+      <h3 style="text-align: center">Extraction Information App</h3>
+    </div>
+
+    <!-- Form -->
+    <div class="container">
+      <form action="/send" method="POST">
+        <label for="Alamat Folder">Alamat Folder</label>
+        <input
+          type="text"
+          placeholder="Alamat Folder"
+          class="u-full-width"
+          name="folderPath"
+        />
+
+        <label for="Keyword">Keyword</label>
+        <input
+          type="text"
+          placeholder="Keyword"
+          class="u-full-width"
+          name="keyword"
+        />
+
+        <label for="Algoritma">Algoritma</label>
+        <select class="u-full-width" name="algoritma">
+          <option value="kmp">Knuth–Morris–Pratt</option>
+          <option value="bm">Boyer–Moore</option>
+          <option value="regex">Regular Expression</option>
+        </select>
+        
+        <input type="submit" value="Search" id="search_btn" style="color: white;"/>
+        <br />
+        <div class="alert">
+          {{ sum }}
+          <ul>
+            {% for item in items %}
+              <br> Kasus      : {{item.cases}} </br>
+              <br> Waktu      : {{item.date}} </br>
+              <br> Nama file  : {{item.name_of_file}} </br>
+              <br> {{item.sentence}} </br>
+              <hr> </hr>
+            {% endfor %}
+          </ul>
+        </div>
+      </form>
+
+    <div style="text-align: center" style="font-size:20px">
+        <b><a href="/pranala" style="color: white; font-size:30px;"> Klik pranala ini </a></b>
+    </div>
+  </body>
+</html>
